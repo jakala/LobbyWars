@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  api:
+    container_name: "api"
+    build: .
+    image: php:8.0
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/api
+    entrypoint: ["php", "-S", "0.0.0.0:8000", "-t", "/api/public"]
+
