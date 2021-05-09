@@ -54,4 +54,13 @@ class faction
     {
         return new SignersCount($this->signers, self::MAX_SIGNERS);
     }
+
+    public function hasKing() :bool
+    {
+        foreach($this->signers as $signer) {
+            if($signer->key()->value() === 'K') return true;
+        }
+
+        return false;
+    }
 }
