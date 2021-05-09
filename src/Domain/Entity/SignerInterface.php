@@ -1,8 +1,8 @@
 <?php
 namespace App\Domain\Entity;
 
-use App\Domain\Entity\ValueObject\Contract\SignerAmount;
-use App\Domain\Entity\ValueObject\Contract\SignerKey;
+use App\Domain\ValueObject\SignerAmount;
+use App\Domain\ValueObject\SignerKey;
 
 interface SignerInterface
 {

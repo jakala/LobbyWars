@@ -1,9 +1,10 @@
 <?php
 namespace App\Domain\ValueObject;
 
-use App\Domain\ValueObject\FactionId;
 
-class RandomFactionId extends FactionId
+use App\Domain\ValueObject\shared\IntegerIdValueObject;
+
+class RandomFactionId extends IntegerIdValueObject
 {
     public function __construct()
     {

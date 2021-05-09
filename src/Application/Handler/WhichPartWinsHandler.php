@@ -44,8 +44,8 @@ class WhichPartWinsHandler
     {
         $check = $plainTiff->getSignersCount() <=> $defendant->getSignersCount();
         switch($check) {
-            case -1: $win = 'plaintiff'; break;
-            case  1: $win = 'defendant'; break;
+            case 1: $win = 'plaintiff'; break;
+            case -1: $win = 'defendant'; break;
             case  0: $win = 'draw'; break;
         }
 

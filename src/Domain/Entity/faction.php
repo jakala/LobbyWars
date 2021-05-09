@@ -3,32 +3,33 @@
 namespace App\Domain\Entity;
 
 use App\Domain\Exception\MaxSignersCodeException;
-use App\Domain\ValueObject\FactionId;
+use App\Domain\ValueObject\RandomFactionId;
 use App\Domain\ValueObject\SignersCount;
 
 class faction
 {
-    public const MAX_SIGNERS = 3;
+    private const MAX_SIGNERS = 3;
 
-    /** @var FactionId $id */
-    private FactionId $id;
+    /** @var RandomFactionId $id */
+    private RandomFactionId $id;
 
     /** @var SignerInterface[] $signers  */
     private array $signers;
 
     /**
      * faction constructor.
-     * @param FactionId $id
+     * @param RandomFactionId $id
      */
-    public function __construct(FactionId $id)
+    public function __construct(RandomFactionId $id)
     {
         $this->id = $id;
+        $this->signers =[];
     }
 
     /**
-     * @return FactionId
+     * @return RandomFactionId
      */
-    public function getId(): FactionId
+    public function getId(): RandomFactionId
     {
         return $this->id;
     }

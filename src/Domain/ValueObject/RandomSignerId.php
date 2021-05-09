@@ -1,9 +1,9 @@
 <?php
 namespace App\Domain\ValueObject;
 
-use App\Domain\Entity\ValueObject\Contract\SignerId;
+use App\Domain\ValueObject\shared\IntegerIdValueObject;
 
-class RandomSignerId extends SignerId
+class RandomSignerId extends IntegerIdValueObject
 {
     public function __construct()
     {
