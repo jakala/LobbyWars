@@ -28,11 +28,11 @@ class SignersCode extends StringValueObject
      */
     private function validate($value, int $maxSigners)
     {
-        if(empty($value)) {
+        if (empty($value)) {
             throw new SignersCodeEmptyException('SignersCode cannot be empty');
         }
 
-        if(!$this->inRange(strlen($value), 1, $maxSigners)) {
+        if (!$this->inRange(strlen($value), 1, $maxSigners)) {
             throw new MaxSignersCodeException('SignersCode must be between 1 and '.$maxSigners);
         }
     }
@@ -45,6 +45,6 @@ class SignersCode extends StringValueObject
      */
     private function inRange($value, $start, $end) : bool
     {
-        return in_array($value, range($start,$end));
+        return in_array($value, range($start, $end));
     }
 }

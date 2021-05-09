@@ -37,9 +37,9 @@ class faction
     /**
      * @throws MaxSignersCodeException
      */
-    public function addSigner( SignerInterface $signer): void
+    public function addSigner(SignerInterface $signer): void
     {
-        if(self::MAX_SIGNERS === count($this->signers)) {
+        if (self::MAX_SIGNERS === count($this->signers)) {
             throw new MaxSignersCodeException('Cannot add signer. Max:'.self::MAX_SIGNERS);
         }
 

@@ -21,15 +21,15 @@ class WhichPartWinsHandler
 
         $winner = $this->lawsuit($plaintiffFaction, $defendantFaction);
 
-        return new WinnerResponse($command->getPlaintiff(),$command->getDefendant(), $winner);
+        return new WinnerResponse($command->getPlaintiff(), $command->getDefendant(), $winner);
     }
 
     private function generateFaction(SignersCode $code): Faction
     {
         $faction = new Faction(new RandomFactionId());
         $list = str_split($code->value());
-        foreach($list as $key) {
-            switch($key) {
+        foreach ($list as $key) {
+            switch ($key) {
                 case 'K': $signer = new KingSigner(new RandomSignerId()); break;
                 case 'N': $signer = new NotarySigner(new RandomSignerId()); break;
                 case 'V': $signer = new ValidatorSigner(new RandomSignerId()); break;
@@ -43,7 +43,7 @@ class WhichPartWinsHandler
     private function lawsuit(Faction $plainTiff, Faction $defendant) : Winner
     {
         $check = $plainTiff->getSignersCount() <=> $defendant->getSignersCount();
-        switch($check) {
+        switch ($check) {
             case 1: $win = 'plaintiff'; break;
             case -1: $win = 'defendant'; break;
             case  0: $win = 'draw'; break;

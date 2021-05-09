@@ -16,7 +16,7 @@ class WhichWinsCommand
      * @param SignersCode $plaintiff
      * @param SignersCode $defendant
      */
-    public function __construct( SignersCode $plaintiff, SignersCode $defendant)
+    public function __construct(SignersCode $plaintiff, SignersCode $defendant)
     {
         $this->plaintiff = $plaintiff;
         $this->defendant = $defendant;
@@ -37,6 +37,4 @@ class WhichWinsCommand
     {
         return $this->defendant;
     }
-
-
 }

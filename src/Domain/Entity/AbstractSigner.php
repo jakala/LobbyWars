@@ -23,7 +23,6 @@ abstract class AbstractSigner implements SignerInterface
      */
     public function getId(): IntegerIdValueObject
     {
-
         return $this->id;
     }
 

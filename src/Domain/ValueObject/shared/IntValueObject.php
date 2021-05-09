@@ -14,6 +14,4 @@ class IntValueObject
     {
         return $this->value;
     }
-
-
 }

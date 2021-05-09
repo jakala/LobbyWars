@@ -26,7 +26,7 @@ class CharValueObject
      */
     private function validate(string $value = null)
     {
-        if(strlen($value) !== 1) {
+        if (strlen($value) !== 1) {
             throw new CharInvalidException('Value must have only 1 character');
         }
     }
