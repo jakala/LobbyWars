@@ -129,7 +129,6 @@ bin/console lawsuit:how-to-win {defendant} {plaintiff}
 bin/console lawsuit:winner {plaintiff} {defendant}
 ```
 
-
 ### Decisiones personales:
 Dado que el problema está abierto a interpretación, he tomado las siguientes decisiones personales:
 
