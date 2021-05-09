@@ -8,6 +8,7 @@ use App\Domain\ValueObject\shared\StringValueObject;
 
 class SignersCode extends StringValueObject
 {
+    protected CONST DEFAULT_CODES = 'KNV';
     /**
      * SignersCode constructor.
      * @param string $value
@@ -39,7 +40,7 @@ class SignersCode extends StringValueObject
         }
 
         if ($this->hasIllegalChars($value)) {
-            throw new IllegalCharsException('SignersCode only accepts chars (K)ing, (N)otary, (V)alidator, (E)mpty');
+            throw new IllegalCharsException('SignersCode only accepts chars: '.self::DEFAULT_CODES);
         }
     }
 
@@ -48,8 +49,10 @@ class SignersCode extends StringValueObject
         return (strlen($value) === $maxSigners);
     }
 
-    private function hasIllegalChars($value) : bool
+    protected function hasIllegalChars($value) : bool
     {
-        return (strlen($value) !== strspn($value, 'KNVE'));
+        return (strlen($value) !== strspn($value, self::DEFAULT_CODES));
     }
+
+
 }

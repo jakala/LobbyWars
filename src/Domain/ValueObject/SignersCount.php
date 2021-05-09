@@ -18,18 +18,28 @@ class SignersCount extends IntValueObject
      */
     private function calculateCount(array $signers): int
     {
-        $king = false;
+        $king = $this->hasKing($signers);
         $total = 0;
         /** @var SignerInterface $signer */
         foreach ($signers as $signer) {
-            if ($signer->key()->value() === 'K') {
-                $king = true;
-            }
             if (!($king && $signer->key()->value() === 'V')) {
                 $total += $signer->amount()->value();
             }
         }
 
         return $total;
+    }
+
+    /**
+     * @param SignerInterface[] $signers
+     * @return bool
+     */
+    public function hasKing(array $signers) :bool
+    {
+        foreach($signers as $signer) {
+            if($signer->key()->value() === 'K') return true;
+        }
+
+        return false;
     }
 }
