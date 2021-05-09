@@ -8,7 +8,6 @@ use App\Domain\Entity\faction;
 use App\Domain\Entity\KingSigner;
 use App\Domain\Entity\NotarySigner;
 use App\Domain\Entity\ValidatorSigner;
-use App\Domain\Exception\CannotWinException;
 use App\Domain\ValueObject\RandomFactionId;
 use App\Domain\ValueObject\RandomSignerId;
 use App\Domain\ValueObject\SignersCode;
@@ -31,12 +30,12 @@ class HowToWinHandler
         $faction = new Faction(new RandomFactionId());
         $list = str_split($code->value());
         foreach ($list as $key) {
-            switch ($key) {
-                case 'K': $signer = new KingSigner(new RandomSignerId()); break;
-                case 'N': $signer = new NotarySigner(new RandomSignerId()); break;
-                case 'V': $signer = new ValidatorSigner(new RandomSignerId()); break;
-                default:  $signer = new EmptySigner(new RandomFactionId()); break;
-            }
+            $signer = match ($key) {
+                'K' => new KingSigner(new RandomSignerId()),
+                'N' => new NotarySigner(new RandomSignerId()),
+                'V' => new ValidatorSigner(new RandomSignerId()),
+                'E' => new EmptySigner(new RandomFactionId()),
+            };
             $faction->addSigner($signer);
         }
 
@@ -52,14 +51,19 @@ class HowToWinHandler
         $need = ($goal - $actual) + $winDiff; // +1 to win
 
         switch($need) {
-            case 0: $win = 'E'; break;
-            case 1: $win = 'V'; break;
-            case 2: $win = 'N'; break;
+            case -5:
+            case -4:
+            case -3:
+            case -2:
+            case -1:
+            case 0: $win = 'W'; break;  // always win
+            case 1: $win = 'V'; break;  // need V
+            case 2: $win = 'N'; break;  // need N
             case 3:
             case 4:
             case 5:
-            case 6: $win = 'K'; break;
-            default: throw new CannotWinException('Cannot win this lawsuit'); break;
+            case 6: $win = 'K'; break;  // need K
+            default: $win = 'D'; break; //always drop
         }
 
         return new WinnerKey($win);

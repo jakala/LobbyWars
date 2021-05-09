@@ -17,8 +17,9 @@ class SignersCode extends StringValueObject
      */
     public function __construct(string $value, int $maxSigners = 3)
     {
+        $value = strtoupper($value);
         $this->validate($value, $maxSigners);
-        parent::__construct(strtoupper($value));
+        parent::__construct($value);
     }
 
     /**
@@ -55,8 +56,6 @@ class SignersCode extends StringValueObject
 
     private function hasIllegalChars($value) : bool
     {
-
-
         return (strlen($value) !== strspn($value, 'KNVE'));
     }
 }

@@ -16,7 +16,7 @@ class HowToWinResponse implements \JsonSerializable
      * @param SignersCode $defendant
      * @param WinnerKey $winnerKey
      */
-    public function __construct(SignersCode $plaintiff, SignersCode $defendant, WinnerKey $winnerKey)
+    public function __construct(SignersCode $defendant, SignersCode $plaintiff, WinnerKey $winnerKey)
     {
         $this->plaintiff = $plaintiff;
         $this->defendant = $defendant;
@@ -29,8 +29,11 @@ class HowToWinResponse implements \JsonSerializable
     public function jsonSerialize()
     {
         $winner = $this->winnerKey->value();
-        if($winner === 'E') {
-            $winner = "Always win";
+        if($winner === 'W') {
+            $winner = 'Always win';
+        }
+        if($winner === 'D') {
+            $winner = 'Always drop';
         }
         return [
             'defendant' => $this->defendant->value(),
