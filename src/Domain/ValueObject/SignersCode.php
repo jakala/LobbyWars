@@ -1,34 +1,39 @@
 <?php
-namespace App\Domain\Entity\ValueObject\Contract;
+namespace App\Domain\ValueObject;
 
 use App\Domain\Exception\MaxSignersCodeException;
 use App\Domain\Exception\SignersCodeEmptyException;
 use App\Domain\ValueObject\shared\StringValueObject;
-use SignerInterface;
 
 class SignersCode extends StringValueObject
 {
-    public function __construct(array $signers = [], int $maxSigners = 3)
-    {
-        $this->validate($signers, $maxSigners);
-        $value = $this->generateCode($signers);
-        parent::__construct($value);
-    }
-
     /**
-     * @param array $signers
+     * SignersCode constructor.
+     * @param string $value
      * @param int $maxSigners
      * @throws MaxSignersCodeException
      * @throws SignersCodeEmptyException
      */
-    private function validate(array $signers, int $maxSigners)
+    public function __construct(string $value, int $maxSigners = 3)
+    {
+        $this->validate($value, $maxSigners);
+        parent::__construct(strtoupper($value));
+    }
+
+    /**
+     * @param $value
+     * @param int $maxSigners
+     * @throws MaxSignersCodeException
+     * @throws SignersCodeEmptyException
+     */
+    private function validate($value, int $maxSigners)
     {
         if(empty($value)) {
-            throw new SignersCodeEmptyException('SignersCode cannot be generate by empty signers');
+            throw new SignersCodeEmptyException('SignersCode cannot be empty');
         }
 
-        if(!$this->inRange(count($value), 1, $signers)) {
-            throw new MaxSignersCodeException('SignersCode must be between 1 and '.$signers);
+        if(!$this->inRange(strlen($value), 1, $maxSigners)) {
+            throw new MaxSignersCodeException('SignersCode must be between 1 and '.$maxSigners);
         }
     }
 
@@ -41,23 +46,5 @@ class SignersCode extends StringValueObject
     private function inRange($value, $start, $end) : bool
     {
         return in_array($value, range($start,$end));
-    }
-
-    /**
-     * @param array $signers
-     * @return string
-     */
-    private function generateCode(array $signers) : string
-    {
-        $list = $signers;
-        usort($list, function( SignerInterface $a, SignerInterface $b) {
-            return ($a->value() <=> $b->value());
-        });
-        $code = '';
-        foreach($list as $signer) {
-            $code.=$signer->value();
-        }
-
-        return $code;
     }
 }

@@ -1,6 +1,6 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
-health-check:
-  path: /health-check
-  controller: App\Infrastructure\Controller\HealthCheckController
+which_one_wins:
+     path: /which-one-wins/{plaintiff}/vs/{defendant}
+     controller: App\Infrastructure\Controller\WhichOneWinsController

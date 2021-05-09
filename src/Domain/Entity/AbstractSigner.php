@@ -5,7 +5,7 @@ use App\Domain\Entity\ValueObject\Contract\SignerAmount;
 use App\Domain\Entity\ValueObject\Contract\SignerKey;
 use App\Domain\ValueObject\shared\IntegerIdValueObject;
 
-abstract class AbstractSigner
+abstract class AbstractSigner implements SignerInterface
 {
     private IntegerIdValueObject $id;
     private SignerAmount $amount;

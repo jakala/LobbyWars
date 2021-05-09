@@ -2,10 +2,9 @@
 
 namespace App\Domain\Entity;
 
-use App\Domain\Entity\ValueObject\Contract\FactionId;
-use App\Domain\Entity\ValueObject\Contract\SignersCode;
 use App\Domain\Exception\MaxSignersCodeException;
-use SignerInterface;
+use App\Domain\ValueObject\FactionId;
+use App\Domain\ValueObject\SignersCount;
 
 class faction
 {
@@ -46,11 +45,12 @@ class faction
         $this->signers[] = $signer;
     }
 
+
     /**
-     * @return SignersCode
+     * @return
      */
-    public function getSignersCode() : SignersCode
+    public function getSignersCount() : SignersCount
     {
-        return new SignersCode($this->signers, self::MAX_SIGNERS);
+        return new SignersCount($this->signers, self::MAX_SIGNERS);
     }
 }
