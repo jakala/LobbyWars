@@ -13,10 +13,6 @@ class ExceptionSubscriber implements EventSubscriberInterface
     public function onKernelException(ExceptionEvent $event)
     {
         $e = $event->getThrowable();
-        if(!$e instanceOf \Exception) {
-            return ;
-        }
-
         $data = [
             'status' => false,
             'message' => $e->getMessage()

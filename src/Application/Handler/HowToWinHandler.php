@@ -50,21 +50,13 @@ class HowToWinHandler
         $winDiff = $defendantFaction->hasKing() ? 2 : 1; // if has king needs 2, cannot use V
         $need = ($goal - $actual) + $winDiff; // +1 to win
 
-        switch($need) {
-            case -5:
-            case -4:
-            case -3:
-            case -2:
-            case -1:
-            case 0: $win = 'W'; break;  // always win
-            case 1: $win = 'V'; break;  // need V
-            case 2: $win = 'N'; break;  // need N
-            case 3:
-            case 4:
-            case 5:
-            case 6: $win = 'K'; break;  // need K
-            default: $win = 'D'; break; //always drop
-        }
+        $win = match ($need) {
+            -5, -4, -3, -2, -1, 0 => 'W',
+            1 => 'V',
+            2 => 'N',
+            3, 4, 5, 6 => 'K',
+            default => 'D',
+        };
 
         return new WinnerKey($win);
     }
