@@ -34,8 +34,8 @@ class SignersCode extends StringValueObject
             throw new SignersCodeEmptyException('SignersCode cannot be empty');
         }
 
-        if (!$this->inRange(strlen($value), 1, $maxSigners)) {
-            throw new MaxSignersCodeException('SignersCode must be between 1 and '.$maxSigners);
+        if (!$this->hasLength($value, $maxSigners)) {
+            throw new MaxSignersCodeException('SignersCode must have '.$maxSigners . ' characters');
         }
 
         if ($this->hasIllegalChars($value)) {
@@ -43,15 +43,9 @@ class SignersCode extends StringValueObject
         }
     }
 
-    /**
-     * @param $value
-     * @param $start
-     * @param $end
-     * @return bool
-     */
-    private function inRange($value, $start, $end) : bool
+    private function hasLength($value, $maxSigners): bool
     {
-        return in_array($value, range($start, $end));
+        return (strlen($value) === $maxSigners);
     }
 
     private function hasIllegalChars($value) : bool
