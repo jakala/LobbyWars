@@ -4,3 +4,7 @@
 which_one_wins:
      path: /which-one-wins/{plaintiff}/vs/{defendant}
      controller: App\Infrastructure\Controller\WhichOneWinsController
+
+how_to_win:
+     path: /how-to-win/{defendant}/vs/{plaintiff}
+     controller: App\Infrastructure\Controller\HowToWinController
