@@ -8,22 +8,57 @@ Este ejercicio se ha iniciado con un proyecto propio de definición de esqueleto
 He añadido un Docker-compose para crear un contenedor con la versión de php y configurado para que monte el directorio 
 de la app. Se pueden ver más detalles en el proyecto [skeleton](https://github.com/jakala/skeleton) 
 
-## Estructura de Carpetas
+## Estructura de Carpetas y Archivos
 ```
-src
+src/
 ├── Application
 │   ├── Command
+│   │   ├── HowToWinCommand.php
+│   │   └── WhichWinsCommand.php
 │   ├── Exception
 │   ├── Handler
-│   ├── Response
-│   └── Service
+│   │   ├── HowToWinHandler.php
+│   │   └── WhichPartWinsHandler.php
+│   └── Response
+│       ├── HowToWinResponse.php
+│       └── WinnerResponse.php
 ├── Domain
 │   ├── Entity
-│   ├── Event
+│   │   ├── AbstractSigner.php
+│   │   ├── EmptySigner.php
+│   │   ├── faction.php
+│   │   ├── KingSigner.php
+│   │   ├── NotarySigner.php
+│   │   ├── SignerInterface.php
+│   │   └── ValidatorSigner.php
 │   ├── Exception
+│   │   ├── CharInvalidException.php
+│   │   ├── IllegalCharsException.php
+│   │   ├── IntegerIdEmptyException.php
+│   │   ├── IntegerIdInvalidException.php
+│   │   ├── MaxSignersCodeException.php
+│   │   └── SignersCodeEmptyException.php
 │   └── ValueObject
-├── Infrastructure
-└   └── Controller
+│       ├── RandomFactionId.php
+│       ├── RandomSignerId.php
+│       ├── shared
+│       ├── SignerAmount.php
+│       ├── SignerKey.php
+│       ├── SignersCode.php
+│       ├── SignersCodeWithEmpty.php
+│       ├── SignersCount.php
+│       ├── WinnerKey.php
+│       └── Winner.php
+└── Infrastructure
+    ├── Command
+    │   ├── HowToWinLawsuitCommand.php
+    │   └── WhichOneWinsLawsuitCommand.php
+    ├── Controller
+    │   ├── HowToWinController.php
+    │   └── WhichOneWinsController.php
+    └── EventListener
+        └── ExceptionSubscriber.php
+
 ```
 ## Requisitos
 - git
