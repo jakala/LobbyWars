@@ -28,9 +28,5 @@ class IntegerIdValueObject extends IntValueObject
         if (empty($value)) {
             throw new IntegerIdEmptyException('Id cannot be Empty');
         }
-
-        if ($value < 1) {
-            throw new IntegerIdInvalidException('Invalid value for Id');
-        }
     }
 }

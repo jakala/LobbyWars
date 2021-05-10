@@ -2,12 +2,10 @@
 
 namespace App\test\Infrastructure\Controller;
 
-use App\Application\Handler\HowToWinHandler;
 use App\Application\Handler\WhichPartWinsHandler;
 use App\Domain\Exception\IllegalCharsException;
 use App\Domain\Exception\MaxSignersCodeException;
 use App\Domain\Exception\SignersCodeEmptyException;
-use App\Infrastructure\Controller\HowToWinController;
 use App\Infrastructure\Controller\WhichOneWinsController;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
