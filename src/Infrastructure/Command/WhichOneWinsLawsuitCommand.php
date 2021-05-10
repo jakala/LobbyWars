@@ -49,11 +49,10 @@ class WhichOneWinsLawsuitCommand extends Command
             $result = $this->handler->whichPartWins($command);
             $response = json_encode($result, true);
             $output->writeln($response);
-        } catch(SignersCodeEmptyException|MaxSignersCodeException|IllegalCharsException $e) {
+        } catch (SignersCodeEmptyException|MaxSignersCodeException|IllegalCharsException $e) {
             $output->writeln($e->getMessage());
             return Command::FAILURE;
         }
         return Command::SUCCESS;
     }
-
 }

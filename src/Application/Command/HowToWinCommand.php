@@ -37,5 +37,4 @@ class HowToWinCommand
     {
         return $this->plaintiff;
     }
-
 }

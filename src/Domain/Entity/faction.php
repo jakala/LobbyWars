@@ -57,8 +57,10 @@ class faction
 
     public function hasKing() :bool
     {
-        foreach($this->signers as $signer) {
-            if($signer->key()->value() === 'K') return true;
+        foreach ($this->signers as $signer) {
+            if ($signer->key()->value() === 'K') {
+                return true;
+            }
         }
 
         return false;

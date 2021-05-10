@@ -29,10 +29,10 @@ class HowToWinResponse implements \JsonSerializable
     public function jsonSerialize()
     {
         $winner = $this->winnerKey->value();
-        if($winner === 'W') {
+        if ($winner === 'W') {
             $winner = 'Always win';
         }
-        if($winner === 'D') {
+        if ($winner === 'D') {
             $winner = 'Always drop';
         }
         return [

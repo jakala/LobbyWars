@@ -85,5 +85,4 @@ class WhichOneWinsLawsuitCommandTest extends TestCase
     {
         return $this->createMock(WhichPartWinsHandler::class);
     }
-
 }

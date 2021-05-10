@@ -84,5 +84,4 @@ class HowToWinLawsuitCommandTest extends TestCase
     {
         return $this->createMock(HowToWinHandler::class);
     }
-
 }

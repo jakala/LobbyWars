@@ -8,7 +8,7 @@ use App\Domain\ValueObject\shared\StringValueObject;
 
 class SignersCode extends StringValueObject
 {
-    protected CONST DEFAULT_CODES = 'KNV';
+    protected const DEFAULT_CODES = 'KNV';
     /**
      * SignersCode constructor.
      * @param string $value
@@ -53,6 +53,4 @@ class SignersCode extends StringValueObject
     {
         return (strlen($value) !== strspn($value, self::DEFAULT_CODES));
     }
-
-
 }

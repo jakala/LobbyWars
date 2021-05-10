@@ -30,7 +30,7 @@ class HowToWinController
             $response = $this->handler->howToWin($command);
 
             return new JsonResponse($response);
-        } catch(SignersCodeEmptyException|MaxSignersCodeException|IllegalCharsException $e ) {
+        } catch (SignersCodeEmptyException|MaxSignersCodeException|IllegalCharsException $e) {
             throw new BadRequestException($e->getMessage());
         }
     }

@@ -37,5 +37,4 @@ class WhichPartWinsHandlerTest extends TestCase
         $decode = json_decode(json_encode($response), true);
         $this->assertEquals($decode['winner'], $winner);
     }
-
 }

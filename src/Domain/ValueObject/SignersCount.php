@@ -36,8 +36,10 @@ class SignersCount extends IntValueObject
      */
     public function hasKing(array $signers) :bool
     {
-        foreach($signers as $signer) {
-            if($signer->key()->value() === 'K') return true;
+        foreach ($signers as $signer) {
+            if ($signer->key()->value() === 'K') {
+                return true;
+            }
         }
 
         return false;

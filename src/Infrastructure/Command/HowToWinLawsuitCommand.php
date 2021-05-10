@@ -47,7 +47,7 @@ class HowToWinLawsuitCommand extends Command
             $result = $this->handler->howToWin($command);
             $response = json_encode($result, true);
             $output->writeln($response);
-        } catch(SignersCodeEmptyException|MaxSignersCodeException|IllegalCharsException $e) {
+        } catch (SignersCodeEmptyException|MaxSignersCodeException|IllegalCharsException $e) {
             $output->writeln($e->getMessage());
             return Command::FAILURE;
         }

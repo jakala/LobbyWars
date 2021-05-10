@@ -27,7 +27,7 @@ class WhichOneWinsController
             $response = $this->handler->whichPartWins($command);
 
             return new JsonResponse($response);
-        } catch(SignersCodeEmptyException|MaxSignersCodeException|IllegalCharsException $e) {
+        } catch (SignersCodeEmptyException|MaxSignersCodeException|IllegalCharsException $e) {
             throw new BadRequestException($e->getMessage());
         }
     }
